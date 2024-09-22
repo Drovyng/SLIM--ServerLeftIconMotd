@@ -1,1 +1,4 @@
-texts: [ Админ лентяй! ]
+texts:
+- Lazy admin pls fix
+- SLIM is the best!
+default-arrow: true

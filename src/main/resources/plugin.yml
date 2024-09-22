@@ -6,3 +6,14 @@ prefix: ServerLeftIconMotd
 authors: [ Drovyng ]
 description: ${desc}
 website: https://example.com/
+
+commands:
+  reload-slim:
+    description: SLIM config reloading
+    usage: /reload-slim
+    permission: slim.reloadCommand
+
+permissions:
+  slim.reloadCommand:
+    description: provides access to /reload-slim
+    default: op

@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.drovyng"
-version = "1.0.0"
+version = "1.0.2"
 description = "Server Left Icon Motd"
 
 base {

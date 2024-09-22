@@ -6,26 +6,32 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.List;
 
 public class SLIM extends JavaPlugin {
+    public static SLIM Instance;
     public static List<String> Texts;
+    public static boolean DefaultArrow;
+    public void loadConfigTexts(){
+        reloadConfig();
+        FileConfiguration config = getConfig();
+        Texts = config.getStringList("texts");
+        DefaultArrow = config.getBoolean("default-arrow", true);
+        if (Texts.isEmpty() || config.get("default-arrow", null) == null){
+            Texts = List.of("Admin is lazy", "SLIM is the best!");
+            config.set("texts", Texts);
+            config.set("default-arrow", DefaultArrow);
+            saveConfig();
+        }
+    }
     @Override
     public void onEnable() {
-        // What should this plugin do on startup?
+        Instance = this;
 
         saveDefaultConfig();
 
-        FileConfiguration config = getConfig();
-        Texts = config.getStringList("texts");
-        if (Texts.isEmpty()){
-            Texts.add("Админ лентяй!");
-            config.set("texts", Texts);
-            saveConfig();
-        }
+        loadConfigTexts();
+
+        getCommand("reload-slim").setExecutor(new ReloadCommand());
+
         getServer().getPluginManager().registerEvents(new ServerPingEvent(), this);
         getLogger().info("Loaded SLIM Successfully!");
-    }
-
-    @Override
-    public void onDisable() {
-        // What should this plugin after disabling?
     }
 }
