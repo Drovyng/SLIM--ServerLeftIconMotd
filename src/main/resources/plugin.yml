@@ -1,0 +1,8 @@
+name: SLIM
+version: ${version}
+main: com.drovyng.slim.SLIM
+api-version: ${apiVersion}
+prefix: ServerLeftIconMotd
+authors: [ Drovyng ]
+description: ${desc}
+website: https://example.com/
